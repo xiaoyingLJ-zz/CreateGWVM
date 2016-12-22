@@ -75,8 +75,8 @@
   },
   "variables": {
   	"vnetSettings":"[split(parameters('virtualNetworkName/subnetName'), '/')]",  	
-    "virtualNetworkName": "[variables('vnetSettings')[0]]",
-    "subnetName": "[variables('vnetSettings')[1]]",    
+    "virtualNetworkName": "[variables('vnetSettings')[copyIndex()]]",
+    "subnetName": "[variables('vnetSettings')[copyIndex()]]",    
     "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]",
     "storageAccountName": "[concat(uniquestring(resourceGroup().id), toLower(parameters('Name')))]",
     "nicName": "[concat(parameters('Name'), 'Nic')]",
