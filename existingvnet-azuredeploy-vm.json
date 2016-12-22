@@ -76,7 +76,7 @@
   "variables": {
   	"vnetSettings":"[split(parameters('virtualNetworkName/subnetName'), '/')]",
     "virtualNetworkName": "[variables('vnetSettings')[0]]",
-    "subnetName": "[variables('vnetSettings')[0]]",
+    "subnetName": "[variables('vnetSettings')[1]]",
     "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]",
     "storageAccountName": "[concat(uniquestring(resourceGroup().id), toLower(parameters('Name')))]",
     "nicName": "[concat(parameters('Name'), 'Nic')]",
@@ -116,7 +116,6 @@
       "location": "[resourceGroup().location]",
       "dependsOn": [
         "[resourceId('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName'))]",
-        "[resourceId('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]",
         "[resourceId('Microsoft.Network/networkSecurityGroups/', concat(variables('networkSecurityGroupName'), parameters('open gateway port')))]"
       ],
       "properties": {
