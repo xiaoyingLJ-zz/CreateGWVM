@@ -74,7 +74,7 @@
     }
   },
   "variables": {
-  	"vnetSettings":"[split(parameters('virtualNetworkName/subnetName'), ',')]",  	
+  	"vnetSettings":"[split(parameters('virtualNetworkName/subnetName'), '/')]",  	
     "virtualNetworkName": "[variables('vnetSettings')[0]]",
     "subnetName": "[variables('vnetSettings')[1]]",    
     "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]",
