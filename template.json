@@ -65,10 +65,10 @@
         "description": "Do you want open gateway port (8050)?"
       }
     },
-    "Create new VNET or use Existed":{
+    "Create new VNET or use Existing":{
       "type": "string",
       "defaultValue": "exist",
-      "allowedValues": ["new", "exist"]
+      "allowedValues": ["new", "existing"]
     },
     "virtualNetworkName/subnetName":{
         "type": "string",
