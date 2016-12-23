@@ -34,7 +34,7 @@
     "vnetSettings":"[split(parameters('virtualNetworkName/subnetName'), '/')]",
     "virtualNetworkName": "[variables('vnetSettings')[0]]",
     "subnetName": "[variables('vnetSettings')[1]]",
-    "storageAccountName": "[concat(toLower(parameters('Name')), uniquestring(resourceGroup().id))]",
+    "storageAccountName": "[take(concat(toLower(parameters('Name')), uniquestring(resourceGroup().id)), 24)]",
     "nicName": "[concat(parameters('Name'), 'Nic')]",
     "addressPrefix": "10.0.0.0/16",
     "subnetPrefix": "10.0.0.0/24",
@@ -47,7 +47,7 @@
   "resources": [
     {
       "type": "Microsoft.Storage/storageAccounts",
-      "name": "[take(variables('storageAccountName'),24)]",
+      "name": "[variables('storageAccountName')]",
       "apiVersion": "2016-01-01",
       "location": "[resourceGroup().location]",
       "sku": {

@@ -77,7 +77,7 @@
     "virtualNetworkName": "[variables('vnetSettings')[0]]",
     "subnetName": "[variables('vnetSettings')[1]]",
     "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]",
-    "storageAccountName": "[concat(uniquestring(resourceGroup().id), toLower(parameters('Name')))]",
+    "storageAccountName": "[take(concat(toLower(parameters('Name')), uniquestring(resourceGroup().id)), 24)]",
     "nicName": "[concat(parameters('Name'), 'Nic')]",
     "publicIPAddressName": "[concat(parameters('Name'), '-ip')]",
     "networkSecurityGroupName": "[concat(parameters('Name'), 'nsg')]",
@@ -87,7 +87,7 @@
   "resources": [
     {
       "type": "Microsoft.Storage/storageAccounts",
-      "name": "[take(variables('storageAccountName'),24)]",
+      "name": "[variables('storageAccountName')]",
       "apiVersion": "2016-01-01",
       "location": "[resourceGroup().location]",
       "sku": {
