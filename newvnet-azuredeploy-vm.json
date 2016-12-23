@@ -239,11 +239,11 @@
     },
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
-      "name": "[concat(parameters('Name'),'/installgateway',parameters('Name'))]",
+      "name": "[concat(parameters('Name'),'/', parameters('Name'),'installGW')]",
       "apiVersion": "2015-06-15",
       "location": "[resourceGroup().location]",
       "dependsOn": [
-        "[concat('Microsoft.Compute/virtualMachines/',parameters('Name'))]",
+        "[resourceId('Microsoft.Compute/virtualMachines/',parameters('Name'))]",
         "[resourceId('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName'))]"
       ],
       "properties": {

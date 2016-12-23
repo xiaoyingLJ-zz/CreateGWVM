@@ -3,73 +3,31 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "Name": {
-      "type": "string",
-      "metadata": {
-        "description": "Input the virtual machine name"
-      }
+      "type": "string"
     },        
     "Size": {
-        "type": "string",
-        "defaultValue": "Standard_DS1_v2",
-        "allowedValues": ["Standard_DS1_v2", "Standard_DS2_v2", "Standard_DS3_v2", "Standard_DS4_v2", "Standard_DS5_v2", 
-        	"Standard_DS11_v2", "Standard_DS12_v2", "Standard_DS13_v2", "Standard_DS14_v2", "Standard_DS15_v2",
-        	"Standard_DS1", "Standard_DS2", "Standard_DS3", "Standard_DS4",
-        	"Standard_DS11", "Standard_DS12", "Standard_DS13", "Standard_DS14",
-        	"Standard_GS1", "Standard_GS2", "Standard_GS3", "Standard_GS4", "Standard_GS5",
-    		"Standard_F1s", "Standard_F2s", "Standard_F4s", "Standard_F8s", "Standard_F16s",
-        ]
+        "type": "string"
     },
     "User name": {
-      "type": "string",
-      "metadata": {
-        "description": "Username for the Virtual Machine."
-      }
+      "type": "string"
     },
     "Password": {
-      "type": "securestring",
-      "metadata": {
-        "description": "Password for the Virtual Machine."
-      }
+      "type": "securestring"
     },
     "windowsOSVersion": {
-      "type": "string",
-      "defaultValue": "2016-Datacenter",
-      "allowedValues": [
-        "2008-R2-SP1",
-        "2012-Datacenter",
-        "2012-R2-Datacenter",
-        "2016-Datacenter-with-Containers",
-        "2016-Datacenter"
-      ],
-      "metadata": {
-        "description": "The Windows version for the VM. This will pick a fully patched image of this given Windows version."
-      }
+      "type": "string"
     },
     "dnsLabelPrefix": {
-      "type": "string",
-      "metadata": {
-        "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
-      }
+      "type": "string"
     },
     "gatewayKey": {
-      "type": "securestring",
-      "metadata":{
-        "description": "gateway key"
-      }
+      "type": "securestring"
     },
     "open gateway port": {
-      "type": "string",
-      "allowedValues": ["Yes", "No"],
-      "defaultValue": "Yes",
-      "metadata":{
-        "description": "Do you want open gateway port (8050)?"
-      }
+      "type": "string"
     },
     "virtualNetworkName/subnetName":{
-    	"type": "string",
-    	"metadata": {
-    		"description": "Existed vnet and its subnet"
-    	}
+    	"type": "string"
     }
   },
   "variables": {
@@ -257,11 +215,11 @@
     },
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
-      "name": "[concat(parameters('Name'),'/installgateway',parameters('Name'))]",
+      "name": "[concat(parameters('Name'),'/', parameters('Name'),'installGW')]",
       "apiVersion": "2015-06-15",
       "location": "[resourceGroup().location]",
       "dependsOn": [
-        "[concat('Microsoft.Compute/virtualMachines/',parameters('Name'))]",
+        "[resourceId('Microsoft.Compute/virtualMachines/',parameters('Name'))]",
         "[resourceId('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName'))]"
       ],
       "properties": {
