@@ -67,7 +67,7 @@
     },
     "Create new VNET or use Existing":{
       "type": "string",
-      "defaultValue": "exist",
+      "defaultValue": "existing",
       "allowedValues": ["new", "existing"]
     },
     "virtualNetworkName/subnetName":{
