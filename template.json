@@ -78,7 +78,7 @@
     }
   },
   "variables": {
-     "templatelink": "[concat('https://raw.githubusercontent.com/xiaoyingLJ/CreateGWVM/master/',parameters('Create new VNET or use Existed'),'vnet-azuredeploy-vm.json')]"
+     "templatelink": "[concat('https://raw.githubusercontent.com/xiaoyingLJ/CreateGWVM/master/',parameters('Create new VNET or use Existing'),'vnet-azuredeploy-vm.json')]"
   },
   "resources": [
     {
